@@ -17,12 +17,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    return "HELLO";
-});
-Route::get('/at', function () {
-    return "AT";
-});
-Route::get('/product', function () {
-    return "product";
-});
