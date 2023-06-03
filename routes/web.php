@@ -23,3 +23,6 @@ Route::get('/hello', function () {
 Route::get('/at', function () {
     return "AT";
 });
+Route::get('/product', function () {
+    return "product";
+});
