@@ -18,16 +18,20 @@ Route::get('/', function () {
 });
 
 
-Route::get('/apple', function () {
-    return "apple";
-});
+// Route::get('/apple', function () {
+//     return "apple";
+// });
 
 
-Route::get('/orange', function () {
-    return "orange";
-});
+// Route::get('/orange', function () {
+//     return "orange";
+// });
 
 
-Route::get('/apple2', function () {
-    return "apple2";
+// Route::get('/apple2', function () {
+//     return "apple2";
+// });
+
+Route::get('/lhk', function () {
+    return "lhk";
 });
