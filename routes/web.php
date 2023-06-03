@@ -21,3 +21,8 @@ Route::get('/', function () {
 Route::get('/apple', function () {
     return "apple";
 });
+
+
+Route::get('/orange', function () {
+    return "orange";
+});
