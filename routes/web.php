@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('/hello', function () {
     return "HELLO";
 });
+Route::get('/at', function () {
+    return "AT";
+});
