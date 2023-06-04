@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 
@@ -20,10 +21,10 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function store(AdminRequest $request)
     {
-        $validated = $request->validated(); // validation a way using ProductRequest
-
+        $validated = $request->validated();
+        $validated['password'] = bcrypt($validated['password']);
         $admin = Admin::create($validated);
         return $this->successReqonse($admin, "Create a admin successfully");
     }
@@ -41,9 +42,10 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Admin $admin)
+    public function update(AdminRequest $request, Admin $admin)
     {
         $validated = $request->validated();
+        $validated['password'] = bcrypt($validated['password']);
         if($admin->update($validated)) {
             return $this->successReqonse($admin, "Admin Updated Successfully");
         }
