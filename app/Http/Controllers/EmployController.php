@@ -70,20 +70,20 @@ class EmployController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EmployRequest $request, Employ $employ)
+    public function update(Request $request, Employ $employ)
     {
         //
-        $validator = $this->validated();
+        // $validator = $this->validated();
 
-        // $validator = $request->validate([
-        //     "fullname" => "required|string",
-        //     "email" => "required|string|email",
-        //     "password" => "required|string|",
-        //     "phone" => "integer",
-        //     "photo" => "string",
-        //     "position" => "required|string|",
-        //     "salary" => "required|integer|",
-        // ]);
+        $validator = $request->validate([
+            "fullname" => "required|string",
+            "email" => "required|string|email",
+            "password" => "required|string|",
+            "phone" => "integer",
+            "photo" => "string",
+            "position" => "required|string|",
+            "salary" => "required|integer|",
+        ]);
 
         // $validated = $request->validated();
 
