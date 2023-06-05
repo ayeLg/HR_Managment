@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('position');
             $table->integer('salary');
-            $table->integer('role');
+            $table->tinyInteger('role')->default(0);
             $table->timestamps();
         });
     }
