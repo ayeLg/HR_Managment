@@ -10,19 +10,24 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function successReqonse($data,$message) {
+    public function successResponse($data, $message)
+    {
         return response()->json([
-            'error' => false,
-            'message' => $message,
-            'data' => $data,
+            "error" => true,
+            "message" => $message,
+            "data" => $data,
         ]);
     }
 
-    public function errorResponse($message, $data = []) {
+
+    public function errorResponse($message, $data = [])
+    {
         return response()->json([
+
             'error' => true,
             'message' => $message,
             'data' => $data,
+
         ]);
     }
 }

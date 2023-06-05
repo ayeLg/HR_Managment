@@ -25,3 +25,5 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register','register');
 });
 Route::apiResource('/admin', AdminController::class);
+
+Route::apiResource('employs', EmployController::class);
