@@ -7,7 +7,10 @@ use App\Models\Employ;
 // use Illuminate\Http\Request;
 use Illuminate\Http\Request;
 // use App\Http\Requests\EmployRequest;
-use App\Http\Requests\EmployRequest;
+// use App\Http\Requests\EmployRequest;
+// use App\Http\Requests\EmployRequest;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class EmployController extends Controller
@@ -26,11 +29,22 @@ class EmployController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EmployRequest $request)
+    public function store(Request $request)
     {
         //
+        // $validator = validator::make($request->all());
 
-        $validator = $this->validated();
+        $validator = $request->validate([
+            "fullname" => "required|string",
+            "email" => "required|string|email",
+            "password" => "required|string|",
+            "phone" => "integer",
+            "photo" => "string",
+            "position" => "required|string|",
+            "salary" => "required|integer|",
+        ]);
+
+        // $validator = $this->validated();
 
         if ($employ = Employ::create($validator)) {
 
@@ -56,10 +70,20 @@ class EmployController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EmployRequest $request, Employ $employ)
+    public function update(Request $request, Employ $employ)
     {
         //
-        $validator = $this->validated();
+        // $validator = $this->validated();
+
+        $validator = $request->validate([
+            "fullname" => "required|string",
+            "email" => "required|string|email",
+            "password" => "required|string|",
+            "phone" => "integer",
+            "photo" => "string",
+            "position" => "required|string|",
+            "salary" => "required|integer|",
+        ]);
 
         if ($employ->update($validator)) {
             # code...
@@ -86,3 +110,66 @@ class EmployController extends Controller
         //
     }
 }
+
+
+
+
+
+
+
+
+    // ???? validator ????
+//     private function validator($request)
+//     {
+//         $validationRulesPass =
+//             [
+//                 "fullname" => "required|string",
+//                 "email" => "required|string|email",
+//                 "password" => "required|string|",
+//                 "phone" => "required|string|",
+//                 "photo" => "string",
+//                 // "postion" => "required|string|",
+//                 "salary" => "required|integer|",
+//             ];
+
+
+
+//         $validationMessagePass =
+//             [
+//                 'fullname.required' => "need to fill fullname",
+//                 'email.required' => "need to fill email",
+//                 'password.required' => "need to fill password",
+//                 'phone.required' => "need to fill phone",
+//                 //  'photo.required' => "need to fill photo",
+//                 // 'position.required' => "need to fill position",
+//                 'salary.required' => "need to fill fullname",
+//             ];
+//         validator::make($request->all(), $validationRulesPass, $validationMessagePass)->validate();
+//     }
+// }
+
+// validation
+//  $validationRule = [
+//     "posttitle" => "required|unique:posts,title|min:5",
+//     "postdescription" => "required"
+// ];
+// $validationMessage =[
+//     'posttitle.required' => 'title ဖြည့်ပါ'  ,
+//     'posttitle.unique' => 'title တူနေသညါ' ,
+//     'posttitle.min' => 'ငါးလူံးလိုတယ်' ,
+//     'postdescription.required' => 'description ဖြည့်ပါ'
+// ];
+// Validator::make($req->all(), $validationRule,$validationMessage)->validate();
+
+
+
+    // private function getData($request)
+    // {
+    //     return [
+    //         'category_id' => $request->categoryId,
+    //         'title' => $request->categoryName,
+    //         'description'   => $request->categoryDescription,
+    //         'created_at' => Carbon::now(),
+    //         'updated_at' => Carbon::now(),
+    //     ];
+    // }

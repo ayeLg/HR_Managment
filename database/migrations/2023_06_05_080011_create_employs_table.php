@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('phone');
             $table->string('password');
             $table->string('photo')->nullable();
-            $table->string('position');
+            $table->string('position')->default('admin');
             $table->integer('salary');
             $table->tinyInteger('role')->default(0);
             $table->timestamps();

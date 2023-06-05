@@ -15,6 +15,7 @@ class Employ extends Model
         'password',
         'photo',
         'position',
+        'phone',
         'salary',
         'role',
     ];
