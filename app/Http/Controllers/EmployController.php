@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 // use App\Http\Resources\EmployResource;
+
+use App\Http\Requests\EmployRequest;
 use App\Models\Employ;
 // use Illuminate\Http\Request;
 use Illuminate\Http\Request;
@@ -70,26 +72,25 @@ class EmployController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Employ $employ)
+    public function update(EmployRequest $request, Employ $employ)
     {
         //
-        // $validator = $this->validated();
+        $validator = $this->validated();
 
-        $validator = $request->validate([
-            "fullname" => "required|string",
-            "email" => "required|string|email",
-            "password" => "required|string|",
-            "phone" => "integer",
-            "photo" => "string",
-            "position" => "required|string|",
-            "salary" => "required|integer|",
-        ]);
+        // $validator = $request->validate([
+        //     "fullname" => "required|string",
+        //     "email" => "required|string|email",
+        //     "password" => "required|string|",
+        //     "phone" => "integer",
+        //     "photo" => "string",
+        //     "position" => "required|string|",
+        //     "salary" => "required|integer|",
+        // ]);
+
+        // $validated = $request->validated();
 
         if ($employ->update($validator)) {
-            # code...
-            return $this->successResponse($employ, "update cmpleted");
-        } else {
-            return $this->errorResponse("cant update");
+            return $this->successResponse($employ, "employ updated successfully");
         }
     }
 
@@ -99,14 +100,14 @@ class EmployController extends Controller
     public function destroy(Employ $employ)
     {
 
-        $validator = $this->validated();
+        // $validator = $this->validated();
 
-        if ($employ->delete($validator)) {
-            # code...
-            return $this->successResponse($employ, "delete cmpleted");
-        } else {
-            return $this->errorResponse("cant delete");
-        }
+
+        $employ->delete();
+
+        # code...
+        return $this->successResponse($employ, "delete cmpleted");
+
         //
     }
 }
