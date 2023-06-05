@@ -14,8 +14,12 @@ class AdminController extends Controller
     public function index()
     {
         $admin = Admin::all();
+        if($admin) {
+            return $this->successReqonse($admin, "Get all admin successfully");
+        }
 
-        return $this->successReqonse($admin, "Get all admin successfully");
+        return $this->errorResponse("Get all admin not successfully");
+
     }
 
     /**
@@ -26,7 +30,11 @@ class AdminController extends Controller
         $validated = $request->validated();
         $validated['password'] = bcrypt($validated['password']);
         $admin = Admin::create($validated);
-        return $this->successReqonse($admin, "Create a admin successfully");
+
+        if($admin) {
+            return $this->successReqonse($admin, "Create a admin successfully");
+        }
+        return $this->errorResponse("Create admin not successfully");
     }
 
 
@@ -36,7 +44,10 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        return $admin;
+        if($admin) {
+            return $this->successReqonse($admin, "Get a admin detail successfully");
+        }
+        return $this->errorResponse("Get a admin detail not successfully");
     }
 
     /**

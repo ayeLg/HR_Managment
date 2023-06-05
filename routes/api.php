@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EmployController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,4 @@ Route::controller(AuthController::class)->group(function () {
 });
 Route::apiResource('/admin', AdminController::class);
 
-Route::apiResource('employs', EmployController::class);
+Route::apiResource('/employs', EmployController::class);

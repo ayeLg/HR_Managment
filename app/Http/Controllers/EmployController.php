@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-// use App\Http\Resources\EmployResource;
+
 use App\Models\Employ;
-// use Illuminate\Http\Request;
+
 use Illuminate\Http\Request;
-// use App\Http\Requests\EmployRequest;
 use App\Http\Requests\EmployRequest;
+
 
 
 class EmployController extends Controller
@@ -30,7 +30,7 @@ class EmployController extends Controller
     {
         //
 
-        $validator = $this->validated();
+        $validator = $request->validated();
 
         if ($employ = Employ::create($validator)) {
 
@@ -45,7 +45,7 @@ class EmployController extends Controller
      */
     public function show(Employ $employ)
     {
-        //
+
         if ($employ) {
             return $this->successResponse($employ, "employ detail");
         } else {
@@ -59,7 +59,7 @@ class EmployController extends Controller
     public function update(EmployRequest $request, Employ $employ)
     {
         //
-        $validator = $this->validated();
+        $validator = $request->validated();
 
         if ($employ->update($validator)) {
             # code...
@@ -75,14 +75,14 @@ class EmployController extends Controller
     public function destroy(Employ $employ)
     {
 
-        $validator = $this->validated();
 
-        if ($employ->delete($validator)) {
+
+        if ($employ->delete()) {
             # code...
             return $this->successResponse($employ, "delete cmpleted");
         } else {
             return $this->errorResponse("cant delete");
         }
-        //
+
     }
 }
