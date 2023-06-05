@@ -19,12 +19,15 @@ class Controller extends BaseController
         ]);
     }
 
+
     public function errorResponse($message, $data = [])
     {
         return response()->json([
-            "error" => false,
-            "message" => $message,
-            "data" => $data,
+
+            'error' => true,
+            'message' => $message,
+            'data' => $data,
+
         ]);
     }
 }

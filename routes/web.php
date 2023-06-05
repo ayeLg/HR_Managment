@@ -16,3 +16,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Route::get('/apple', function () {
+//     return "apple";
+// });
+
+
+// Route::get('/orange', function () {
+//     return "orange";
+// });
+
+
+// Route::get('/apple2', function () {
+//     return "apple2";
+// });
+
+Route::get('/lhk', function () {
+    return "lhk";
+});
