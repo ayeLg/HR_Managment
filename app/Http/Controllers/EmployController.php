@@ -24,7 +24,7 @@ class EmployController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EmployRequest $request)
+    public function store(EmployResource $request)
     {
         //
 
@@ -54,7 +54,7 @@ class EmployController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EmployRequest $request, Employ $employ)
+    public function update(EmployResource $request, Employ $employ)
     {
         //
         $validator = $this->validated();
