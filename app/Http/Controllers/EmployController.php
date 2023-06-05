@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\EmployResource;
+// use App\Http\Resources\EmployResource;
 use App\Models\Employ;
+// use Illuminate\Http\Request;
 use Illuminate\Http\Request;
+// use App\Http\Requests\EmployRequest;
 use App\Http\Requests\EmployRequest;
 
 
@@ -24,7 +26,7 @@ class EmployController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EmployResource $request)
+    public function store(EmployRequest $request)
     {
         //
 
@@ -54,7 +56,7 @@ class EmployController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EmployResource $request, Employ $employ)
+    public function update(EmployRequest $request, Employ $employ)
     {
         //
         $validator = $this->validated();
