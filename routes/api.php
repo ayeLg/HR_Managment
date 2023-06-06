@@ -25,6 +25,10 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('login','login');
     Route::post('register','register');
 });
-Route::apiResource('/admin', AdminController::class);
 
-Route::apiResource('/employs', EmployController::class);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('/admin', AdminController::class);
+
+    Route::apiResource('/employs', EmployController::class);
+});
+

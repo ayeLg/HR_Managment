@@ -15,7 +15,7 @@ class AdminController extends Controller
     {
         $admin = Admin::all();
         if($admin) {
-            return $this->successReqonse($admin, "Get all admin successfully");
+            return $this->successResponse($admin, "Get all admin successfully");
         }
 
         return $this->errorResponse("Get all admin not successfully");
@@ -32,7 +32,7 @@ class AdminController extends Controller
         $admin = Admin::create($validated);
 
         if($admin) {
-            return $this->successReqonse($admin, "Create a admin successfully");
+            return $this->successResponse($admin, "Create a admin successfully");
         }
         return $this->errorResponse("Create admin not successfully");
     }
@@ -45,7 +45,7 @@ class AdminController extends Controller
     public function show(Admin $admin)
     {
         if($admin) {
-            return $this->successReqonse($admin, "Get a admin detail successfully");
+            return $this->successResponse($admin, "Get a admin detail successfully");
         }
         return $this->errorResponse("Get a admin detail not successfully");
     }
@@ -58,7 +58,7 @@ class AdminController extends Controller
         $validated = $request->validated();
         $validated['password'] = bcrypt($validated['password']);
         if($admin->update($validated)) {
-            return $this->successReqonse($admin, "Admin Updated Successfully");
+            return $this->successResponse($admin, "Admin Updated Successfully");
         }
 
         return $this->errorResponse("admin updated not successfully");
@@ -70,7 +70,7 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         if($admin->delete()) {
-            return $this->successReqonse($admin, "Admin deleted Successfully");
+            return $this->successResponse($admin, "Admin deleted Successfully");
         }
         return $this->errorResponse("admin deleted not successfully");
     }
