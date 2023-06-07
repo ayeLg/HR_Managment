@@ -32,3 +32,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/employs', EmployController::class);
 });
 
+
