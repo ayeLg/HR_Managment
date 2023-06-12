@@ -29,7 +29,7 @@ class EmployRequest extends FormRequest
             "password" => "required|string|",
             "phone" => "required|string|",
             "photo" => "string",
-            "position" => "required|string|",
+            "postion" => "required|string|",
             "salary" => "required|integer|",
         ];
     }

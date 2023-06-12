@@ -13,6 +13,7 @@ class Employ extends Model
         'fullname',
         'email',
         'password',
+        'phone',
         'photo',
         'position',
         'phone',

@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmployController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +23,8 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
 });
 
-Route::apiResource('employs', EmployController::class);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('/admin', AdminController::class);
+
+    Route::apiResource('/employs', EmployController::class);
+});
