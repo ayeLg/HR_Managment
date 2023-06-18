@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployController;
+use App\Http\Controllers\AttendenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,8 @@ use App\Http\Controllers\EmployController;
 // });
 
 Route::controller(AuthController::class)->group(function () {
-    Route::post('login','login');
-    Route::post('register','register');
+    Route::post('login', 'login');
+    Route::post('register', 'register');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -33,3 +34,4 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 
+Route::apiResource('attendences', AttendenceController::class);
