@@ -10,14 +10,15 @@ use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
 
         $validated = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
-        if(Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])){
+        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
             $user = Auth::user();
             $success['token'] = $user->createToken($user->email)->plainTextToken;
             $success['name'] = $user->name;
@@ -26,7 +27,8 @@ class AuthController extends Controller
         return $this->errorResponse("Login Failed");
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $validated = $request->validate([
             'fullname' => 'required|string',
             'email' => 'required|string|email',
@@ -36,7 +38,7 @@ class AuthController extends Controller
 
         $validated['password '] = bcrypt($validated['password']);
         $image = $validated['photo'];
-        $path  = Storage::disk('public_uploads')->put('/medias/images',$image);
+        $path  = Storage::disk('public_uploads')->put('/medias/images', $image);
         $validated['photo'] = $path;
 
         $user = Admin::create($validated);
