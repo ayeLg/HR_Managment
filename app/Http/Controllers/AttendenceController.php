@@ -66,7 +66,7 @@ class AttendenceController extends Controller
 
         if ($attendence->update($validator)) {
             # code...
-            return $this->successResponse($attendence, "update!");
+            return $this->successResponse(new AttendenceResource($attendence), "update!");
         } else {
             return $this->errorResponse("update fail");
         }
