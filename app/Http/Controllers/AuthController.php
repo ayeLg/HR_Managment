@@ -16,7 +16,7 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-
+        // dd(Admin::all());
         if(Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])){
             $user = Auth::user();
             $success['token'] = $user->createToken($user->email)->plainTextToken;
@@ -27,6 +27,7 @@ class AuthController extends Controller
     }
 
     public function register(Request $request) {
+
         $validated = $request->validate([
             'fullname' => 'required|string',
             'email' => 'required|string|email',
@@ -34,8 +35,12 @@ class AuthController extends Controller
             'photo' => 'required'
         ]);
 
-        $validated['password '] = bcrypt($validated['password']);
+
+        $validated['password'] = bcrypt($validated['password']);
+
         $image = $validated['photo'];
+
+
         $path  = Storage::disk('public_uploads')->put('/medias/images',$image);
         $validated['photo'] = $path;
 
