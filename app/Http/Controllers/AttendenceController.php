@@ -19,6 +19,10 @@ class AttendenceController extends Controller
         //
         $attendences = Attendence::all();
 
+        // return response()->json([
+        //     "data" => $attendences
+        // ],200);
+
         return $this->successResponse($attendences, "attendences data list");
     }
 
@@ -29,9 +33,8 @@ class AttendenceController extends Controller
     public function store(AttendenceRequest $request)
     {
         //
-        $validated = $request->validated();
-
-        $attendence = Attendence::create($validated);
+        $validator = $request->validated();
+        $attendence = Attendence::create($validator);
 
         if ($attendence) {
             # code...

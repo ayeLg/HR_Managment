@@ -19,4 +19,9 @@ class Employ extends Model
         'salary',
         'role',
     ];
+
+    public function attendence()
+    {
+        return $this->hasOne(Attendence::class);
+    }
 }

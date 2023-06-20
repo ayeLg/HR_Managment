@@ -13,7 +13,7 @@ class AttendenceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,7 +27,7 @@ class AttendenceRequest extends FormRequest
     {
         return [
             'status' => 'required|integer',
-            'employ_id' => 'required|integer|unique'
+            'employ_id' => 'required|integer'
         ];
     }
 

@@ -13,4 +13,8 @@ class Attendence extends Model
         'status',
         'employ_id',
     ];
+
+    public function employ(){
+        return $this->belongsTo(Employ::class);
+    }
 }

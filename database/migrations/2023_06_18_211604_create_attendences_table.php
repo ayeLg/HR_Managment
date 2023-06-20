@@ -16,6 +16,8 @@ return new class extends Migration
             $table->integer('status');
             $table->integer('employ_id')->unique();
             $table->timestamps();
+
+            // $table->foreign('employ_id')->references('id')->on('employs')->onDelete('cascade');
         });
     }
 

@@ -20,6 +20,7 @@ class AttendenceResource extends JsonResource
             'id' => $this->id,
 
             'status' => $this->status,
+            
             'employ_id' => $this->employ_id,
 
             'created_at' => $this->created_at->format('d/m/Y'),
