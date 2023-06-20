@@ -24,20 +24,25 @@ class AdminRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'fullname' => 'required|string',
             'email' => 'required|string|email',
             'password' => 'required|string',
+            'photo' => 'required'
         ];
     }
 
     public function message() { // own validation message for each validation
         return [
             'fullname.required' => "Must be full name",
+
+            // 'photo.required' => "Photo must be included in",
         ];
     }
 
     public function failedValidation(Validator $validator) { // to response validation errors message
+
         throw new HttpResponseException(response()->json([
                 'error' => true,
                 'message' => "Validations error",

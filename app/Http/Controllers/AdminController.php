@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -29,6 +30,8 @@ class AdminController extends Controller
     {
         $validated = $request->validated();
         $validated['password'] = bcrypt($validated['password']);
+        $image = $validated['photo'];
+
         $admin = Admin::create($validated);
 
         if($admin) {
@@ -55,8 +58,16 @@ class AdminController extends Controller
      */
     public function update(AdminRequest $request, Admin $admin)
     {
+
         $validated = $request->validated();
         $validated['password'] = bcrypt($validated['password']);
+        $image = $validated['photo'];
+
+
+
+        $path  = Storage::disk('public_uploads')->put('/medias/images',$image);
+        $validated['photo'] = $path;
+
         if($admin->update($validated)) {
             return $this->successResponse($admin, "Admin Updated Successfully");
         }

@@ -1,6 +1,8 @@
 /.phpunit.cache
 /node_modules
 /public/build
+/app/Models/Attendence.php
+/app/Models/EmployTeam.php
 /public/hot
 /public/storage
 /public/medias
@@ -18,3 +20,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
