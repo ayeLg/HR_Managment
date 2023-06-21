@@ -14,4 +14,7 @@ class Team extends Model
     public function project() {
         return $this->belongsToMany(Project::class, ProjectTeam::class);
     }
+    public function employee() {
+        return $this->belongsToMany(Employ::class,EmployeeTeam::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employ;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -28,14 +29,24 @@ class TeamController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
+            'employee_id' => 'required|integer'
 
         ]);
-        $team = Team::create($validated);
+        $employee_id = $validated['employee_id'];
+        $team_data = Employ::find($validated['employee_id'])->get();
+        if($team_data){
+            $team = Team::create($validated);
+            // dd($team);
+            $employ_team = $team->employee()->sync($employee_id);
 
-        if($team){
-            return $this->successResponse($team, "Create Team Successfully");
+            if($employ_team){
+                return $this->successResponse($team, "Create Team Successfully");
+            }
+
         }
-        return $this->errorResponse("Create Team Failed");
+        else {
+            return $this->errorResponse("Your Team isn't there");
+        }
     }
 
     /**
@@ -57,14 +68,22 @@ class TeamController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string',
+            'employee_id' => 'required|integer'
 
         ]);
-
-        $team = $team->update($validated);
-        if($team){
-            return $this->successResponse($team, "Updated team Successfully");
+        $employee_id = $validated['employee_id'];
+        $team_data = Employ::find($validated['employee_id'])->get();
+        if($team_data) {
+            $team = $team->update($validated);
+            if($team){
+                return $this->successResponse($team, "Updated team Successfully");
+            }
+            return $this->errorResponse("Updated Project Failed");
         }
-        return $this->errorResponse("Updated Project Failed");
+        else {
+            return $this->errorResponse("Your Team isn't there");
+        }
+
     }
 
     /**
