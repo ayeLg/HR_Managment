@@ -10,4 +10,7 @@ class EmployeeTeam extends Model
     use HasFactory;
 
     protected $fillable = ['employee_id', 'team_id'];
+
+ 
 }
+
