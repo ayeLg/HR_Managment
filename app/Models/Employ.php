@@ -19,14 +19,4 @@ class Employ extends Model
         'salary',
         'role',
     ];
-
-    public function attendence()
-    {
-        return $this->hasOne(Attendence::class);
-    }
-
-    public function team()
-    {
-        return $this->belongsToMany(Team::class, EmployeeTeam::class);
-    }
 }
